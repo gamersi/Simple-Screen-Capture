@@ -87,3 +87,9 @@ typings/
 
 # Electron-Forge
 out/
+
+#vscode
+.vscode/
+
+#src
+sourcecode.zip
