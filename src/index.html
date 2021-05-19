@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SimpleScreenCapture</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script defer src="render.js"></script>
+    <script defer src="translate.js"></script>
+  </head>
+  <body class="content">
+    <h1 class="HeadlineSimple">Simpler Bildschirm Aufnehmer</h1>
+    <p id="welcomeback">Wilkommen zurück!</p>
+    <video></video>
+
+    <button id="startBtn" class="button is-primary">Start</button>
+    <button id="stopBtn" class="button is-warning">Stop</button>
+
+    <hr />
+    <button id="VideoSelectBtn" class="button is-text">
+      Wähle einen eingang(Video)
+    </button>
+
+    <br />
+    <footer class="madefooter">mit 💖 von gamer si gemacht</footer>
+    <script>
+      function translate(transstring) {
+        var userLang = navigator.language || navigator.userLanguage;
+        userLang = userLang.substring(0, 2);
+        // TEST: userLang = "em";
+        if (userLang.startsWith("de")) {
+          return transstring;
+        } else if (userLang.startsWith("en")) {
+          if (transstring == "Wilkommen zurück,") {
+            return "Welcome back,";
+          }
+        } else {
+          alert("Couldn't detect your language! Using german!");
+          return transstring;
+        }
+      }
+
+      const os = require("os");
+      let welcstring = translate("Wilkommen zurück,");
+      const username = os.userInfo().username;
+      document.getElementById("welcomeback").innerHTML =
+        welcstring + " " + username;
+    </script>
+  </body>
+</html>
